@@ -1,8 +1,8 @@
-# ProtonGen
+# NodeGate
 
 A small backend that serves OpenVPN configuration files on demand.
 
-A client (a "node") asks for a config under a name of its choice. ProtonGen picks a fast, stable server from the public [VPN Gate](https://www.vpngate.net/) list and gives the node that server's config. It never gives the same server to two nodes. The assignment is stored, so the node gets the same config back until it renews or releases it.
+A client (a "node") asks for a config under a name of its choice. NodeGate picks a fast, stable server from the public [VPN Gate](https://www.vpngate.net/) list and gives the node that server's config. It never gives the same server to two nodes. The assignment is stored, so the node gets the same config back until it renews or releases it.
 
 ## Run with Docker
 
@@ -16,7 +16,7 @@ docker compose up -d --build
 
 The API listens on http://localhost:8000. Interactive docs are at http://localhost:8000/docs; use the **Authorize** button to enter your key.
 
-The container won't start without `API_KEY`. The SQLite database is stored in the `protongen-data` volume, so assignments survive restarts and rebuilds.
+The container won't start without `API_KEY`. The SQLite database is stored in the `nodegate-data` volume, so assignments survive restarts and rebuilds.
 
 ```bash
 docker compose logs -f     # follow logs
@@ -100,7 +100,7 @@ Set these in `.env`. Only `API_KEY` is required.
 |---------------------------|-------------------------------------|-------------|
 | `API_KEY`                 | none                                | Key clients send in `X-API-Key`. If empty outside Docker, auth is disabled. |
 | `PORT`                    | `8000`                              | Host port published by docker compose |
-| `DATABASE_URL`            | `sqlite:///./data/protongen.db`     | SQLAlchemy database URL |
+| `DATABASE_URL`            | `sqlite:///./data/nodegate.db`     | SQLAlchemy database URL |
 | `VPNGATE_URL`             | `http://www.vpngate.net/api/iphone/`| Server list source |
 | `VPNGATE_TIMEOUT_SECONDS` | `30`                                | Timeout for downloading the list |
 | `SERVER_LIST_TTL_SECONDS` | `300`                               | How long a downloaded list is reused |

@@ -1,7 +1,7 @@
 services:
   api:
     build: .
-    image: protongen:latest
+    image: nodegate:latest
     restart: unless-stopped
     ports:
       - "${PORT:-8000}:8000"
@@ -10,7 +10,7 @@ services:
       # Refuse to start without a key so the container is never exposed unauthenticated.
       API_KEY: ${API_KEY:?Set API_KEY in .env (see .env.example)}
     volumes:
-      - protongen-data:/app/data
+      - nodegate-data:/app/data
 
 volumes:
-  protongen-data:
+  nodegate-data:

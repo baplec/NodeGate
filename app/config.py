@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     # Clients must send this in the X-API-Key header. Leave empty to disable auth (local development only).
     api_key: str | None = None
 
-    database_url: str = "sqlite:///./data/protongen.db"
+    database_url: str = "sqlite:///./data/nodegate.db"
 
     vpngate_url: str = "http://www.vpngate.net/api/iphone/"
     vpngate_timeout_seconds: float = 30.0
