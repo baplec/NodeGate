@@ -29,7 +29,7 @@ def create_app(settings: Settings | None = None, server_source: ServerSource | N
         engine.dispose()
 
     app = FastAPI(
-        title="ProtonGen",
+        title="NodeGate",
         description="Serves OpenVPN configuration files on demand. Each node gets its own server.",
         version="0.2.0",
         lifespan=lifespan,
